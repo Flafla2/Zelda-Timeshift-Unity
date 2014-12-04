@@ -20,9 +20,6 @@
 		LOD 200
 		
 		CGPROGRAM
-		// You have to target Shader Model 3.0 because there are too many arithmetic operations
-		// for 2.0.
-		#pragma target 3.0
 		#pragma surface surf ColoredSpecular
 
 		sampler2D _DiffuseFar;
@@ -85,27 +82,21 @@
 			float3 d = (float3)_LightPos-IN.worldPos;
 			// Using Distance Squared eliminates the need for a costly square root calculation
 			float distSq = d.x*d.x + d.z*d.z + (1.0f-_Cylindrical)*d.y*d.y;
-			float farDist = _LightRad+_BorderWidth/2;
-			float nearDist = _LightRad-_BorderWidth/2;
-			if(distSq > farDist*farDist) {
-				half4 c = tex2D (_DiffuseFar, IN.uv_DiffuseFar);
-				o.Albedo = c.rgb;
-				o.Alpha = c.a;
-				o.Normal = UnpackNormal(tex2D (_NormalFar, IN.uv_DiffuseFar));
-				half4 s = tex2D(_SpecFar,IN.uv_DiffuseFar);
-				o.Specular = s.a;
-				o.GlossColor = s.rgb;
-			} else if(distSq <  nearDist*nearDist) {
-				half4 c = tex2D (_DiffuseNear, IN.uv_DiffuseNear);
-				o.Albedo = c.rgb;
-				o.Alpha = c.a;
-				o.Normal = UnpackNormal(tex2D (_NormalNear, IN.uv_DiffuseNear));
-				half4 s = tex2D(_SpecNear,IN.uv_DiffuseNear);
-				o.Specular = s.a;
-				o.GlossColor = s.rgb;
-			} else {
-				o.Emission = (fixed3)_BorderColor;
-			}
+			float farDistSq = _LightRad+_BorderWidth/2; farDistSq *= farDistSq;
+			float nearDistSq = _LightRad-_BorderWidth/2; nearDistSq *= nearDistSq;
+			
+			float alpha = saturate((distSq-nearDistSq)/(farDistSq-nearDistSq));
+			float border_alpha = (int)abs(alpha*2-1);
+			half4 c_f = tex2D (_DiffuseFar, IN.uv_DiffuseFar);
+			half4 c_n = tex2D (_DiffuseNear, IN.uv_DiffuseNear);
+			half4 s_f = tex2D(_SpecFar,IN.uv_DiffuseFar);
+			half4 s_n = tex2D(_SpecNear,IN.uv_DiffuseNear);
+			o.Albedo = lerp(fixed3(0,0,0),lerp(c_n.rgb,c_f.rgb,alpha),border_alpha);;
+			o.Alpha = lerp(c_n.a,c_f.a,alpha);
+			o.GlossColor = lerp(s_n.rgb,s_f.rgb,alpha);
+			o.Specular = lerp(s_n.a,s_f.a,alpha);
+			
+			o.Emission = lerp((fixed3)_BorderColor,fixed3(0,0,0),border_alpha);
 		}
 		ENDCG
 	} 
