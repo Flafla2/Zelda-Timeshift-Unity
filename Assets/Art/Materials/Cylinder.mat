@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Cylinder
+  m_Shader: {fileID: 4800000, guid: 07df215903f73874c9cffa5c89242c6f, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseFar
+        second:
+          m_Texture: {fileID: 2800000, guid: 155c076eb88323a418caf60972ed3195, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalFar
+        second:
+          m_Texture: {fileID: 2800000, guid: 3f63785cb3003a74abe7a037e808b084, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseNear
+        second:
+          m_Texture: {fileID: 2800000, guid: 250d7c7c91af10548b10cdc7a00b47d5, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalNear
+        second:
+          m_Texture: {fileID: 2800000, guid: 21875ecf21e3fac448666f8ba7132186, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecFar
+        second:
+          m_Texture: {fileID: 2800000, guid: 88c0ed818ac009f468d7f034d1e66065, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecNear
+        second:
+          m_Texture: {fileID: 2800000, guid: a7605e98c04e02c498d28d0346c62a92, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _LightRad
+        second: 1
+      data:
+        first:
+          name: _BorderWidth
+        second: .100000001
+      data:
+        first:
+          name: _Specularity
+        second: 30
+    m_Colors:
+      data:
+        first:
+          name: _LightPos
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _BorderColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Ambient
+        second: {r: 0, g: 0, b: 0, a: 1}
