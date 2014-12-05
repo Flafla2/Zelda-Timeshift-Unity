@@ -1,20 +1,20 @@
 ﻿Shader "Custom/Radial Texturer" {
 	Properties {
-		_DiffuseFar ("Diffuse (Far)", 2D) = "white" {} 		// Far textures are outside of the orb's sphere of influence
+		_DiffuseFar ("Diffuse (Far)", 2D) = "white" {} 								// Far textures are outside of the orb's sphere of influence
 		_NormalFar ("Normal (Far)", 2D) = "bump" {}
 		_SpecFar ("Specular (Far)", 2D) = "black" {}
-		_DiffuseNear ("Diffuse (Near)", 2D) = "black" {} 	// Near textures are inside of the orb's sphere of influence
+		_DiffuseNear ("Diffuse (Near)", 2D) = "black" {} 							// Near textures are inside of the orb's sphere of influence
 		_NormalNear ("Normal (Near)",2D) = "bump" {}
 		_SpecNear ("Specular (Near)",2D) = "black" {}
 		
-		_Specularity ("Specularity", Float) = 1.0			// Specularity defines the size of the specular highlights on the 
-															// object (high values have a more defined highlight)
+		_Specularity ("Specularity", Float) = 1.0									// Specularity defines the size of the specular highlights on the 
+																					// object (high values have a more defined highlight)
 		
-		_BorderColor ("Border Color", Color) = (1,1,1,1)	// Color of the border.
-		_BorderWidth ("Border Width", Float) = 0.1			// Width of the border in world units
-		[HideInInspector]_LightPos ("Texturer Position", Vector) = (0,0,0,0)	// Position of the "light" (texture caster) in world
-																				// space.  Edited via scripting.
-		_LightRad ("Texturer Radius", Float) = 1.0			// Radius of the "light" (texture caster)
+		_BorderColor ("Border Color", Color) = (1,1,1,1)							// Color of the border.
+		_BorderWidth ("Border Width", Float) = 0.1									// Width of the border in world units
+		[HideInInspector]_LightPos ("Texturer Position", Vector) = (0,0,0,0)		// Position of the "light" (texture caster) in world
+																					// space.  Edited via scripting.
+		_LightRad ("Texturer Radius", Float) = 1.0									// Radius of the "light" (texture caster)
 		[MaterialToggle] _Cylindrical ("Cylindrical (Ignore Y axis)", Float) = 0	// 0 = false, 1 = true
 																					// If this is true the texturer ignores the y (vertical) axis
 	}
